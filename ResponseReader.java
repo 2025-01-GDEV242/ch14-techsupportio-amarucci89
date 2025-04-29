@@ -20,14 +20,38 @@ public class ResponseReader
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Read a list of default responses.
+     * @return The list of responses.
      */
-    public int sampleMethod(int y)
+    public List<String> readDefaultResponses()
     {
-        // put your code here
-        return x + y;
+        String filename = FILE_OF_DEFAULT_RESPONSES;
+        List<String> defaultResponses = new ArrayList<>();
+        
+        try {
+            BufferedReader reader = 
+                new BufferedReader(new FileReader(filename));
+            String response = reader.readLine();
+            while(response != null) {
+                defaultResponses.add(response);
+                response = reader.readLine();
+            }
+            reader.close();
+        }
+        
+        catch(FileNotFoundException e) {
+            System.err.println("Unable to open " + filename);
+        }
+        
+        catch(IOException e) {
+            System.err.println("A problem was encountered reading " +
+                               filename);
+        }
+        
+        if(defaultResponses.size() == 0) {
+            defaultResponses.add("Could you elaborate on that?");
+        }
+        
+        return defaultResponses;  
     }
 }
