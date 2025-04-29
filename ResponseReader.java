@@ -9,16 +9,14 @@ import java.util.*;
  */
 public class ResponseReader
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    private static final String FILE_OF_DEFAULT_RESPONSES = "default.txt";
+    private static final String FILE_OF_MAIN_RESPONSES = "responses.txt";
 
     /**
      * Constructor for objects of class ResponseReader
      */
     public ResponseReader()
     {
-        // initialise instance variables
-        x = 0;
     }
 
     /**
