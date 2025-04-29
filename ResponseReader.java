@@ -96,4 +96,39 @@ public class ResponseReader
         }
         return map;
     }
+    
+    /**
+     * Write a map of string to a file.
+     * @param map The map to be written.
+     * @param filename The file to write.
+     */
+    public void writeMap(HashMap<String, String> map, String filename)
+    {
+        if(map != null) {
+            try {
+                FileWriter writer = new FileWriter(filename);
+                for(String key : map.keySet()) {
+                    String value = map.get(key);
+                    if(value != null) {
+                        writer.write(key.trim());
+                        writer.write('\n');
+                        writer.write(value.trim());
+                        writer.write('\n');
+                    }
+                    else {
+                        System.out.println("Null response for " +
+                                           key + " in writeFile.");
+                    }
+                }                    
+                writer.close();
+            }
+            catch(IOException e) {
+                System.out.println("Problem writing file: " + filename +
+                                   " in writeList");
+            }
+        }
+        else {
+            System.out.println("Null map passed to writeList.");
+        }
+    }
 }
