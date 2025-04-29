@@ -1,7 +1,12 @@
 import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.file.*;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+//import java.nio.charset.Charset;
+//import java.nio.file.*;
+//import java.util.*;
 
 /**
  * The responder class represents a response generator object.
@@ -20,23 +25,21 @@ import java.util.*;
 public class Responder
 {
     // Used to map key words to responses.
-    private HashMap<String, String> responseMap;
+    private Map<String, String> responseMap;
     // Default responses to use if we don't recognise a word.
-    private ArrayList<String> defaultResponses;
-    // The name of the file containing the default responses.
-    private static final String FILE_OF_DEFAULT_RESPONSES = "default.txt";
+    private List<String> defaultResponses;
     private Random randomGenerator;
+    private ResponseReader reader;
 
     /**
      * Construct a Responder
      */
     public Responder()
     {
-        responseMap = new HashMap<>();
-        defaultResponses = new ArrayList<>();
-        fillResponseMap();
-        fillDefaultResponses();
         randomGenerator = new Random();
+        reader = new ResponseReader();
+        defaultResponses = reader.readDefaultResponses();
+        responseMap = reader.readMainResponses();
     }
 
     /**
