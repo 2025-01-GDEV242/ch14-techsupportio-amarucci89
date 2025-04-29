@@ -4,9 +4,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-//import java.nio.charset.Charset;
-//import java.nio.file.*;
-//import java.util.*;
 
 /**
  * The responder class represents a response generator object.
@@ -19,8 +16,8 @@ import java.util.Random;
  * in the HashMap, the corresponding response is returned. If none of the input
  * words is recognized, one of the default responses is randomly chosen.
  * 
- * @author David J. Barnes and Michael Kölling.
- * @version 2016.02.29
+ * @author Alessandro Marucci
+ * @version 2025-04-28
  */
 public class Responder
 {
