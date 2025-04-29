@@ -54,4 +54,46 @@ public class ResponseReader
         
         return defaultResponses;  
     }
+    
+    /**
+     * Read a map of String pairs from a file and return them.
+     * @return A map of key/response pairs.
+     */
+    public Map<String, String> readMainResponses()
+    {
+        String filename = FILE_OF_MAIN_RESPONSES;
+        HashMap<String, String> map = new HashMap<>();
+        try {
+            BufferedReader reader =
+                new BufferedReader(new FileReader(filename));
+            String word;
+            word = reader.readLine();
+            while(word != null) {
+                String response = reader.readLine();
+                if(response != null) {
+                    response = response.trim();
+                    if(response.length() != 0) {
+                        map.put(word, response);
+                    }
+                    else {
+                        System.out.println("Blank response for " +
+                                           word + " in file " +
+                                           filename);
+                    }
+                }
+                else {
+                    System.out.println("Missing response for " +
+                                       word + " in file " +
+                                       filename);
+                }
+                word = reader.readLine();
+            }
+            reader.close();
+        }
+        catch(IOException e) {
+            System.out.println("Problem reading file: " + filename +
+                               " in readMap");
+        }
+        return map;
+    }
 }
