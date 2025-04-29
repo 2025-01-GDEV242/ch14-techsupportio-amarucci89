@@ -122,7 +122,7 @@ public class Responder
     private void fillDefaultResponses()
     {
         Charset charset = Charset.forName("US-ASCII");
-        Path path = Paths.get(FILE_OF_DEFAULT_RESPONSES);
+        Path path = Paths.get("responses.txt");
         try (BufferedReader reader = Files.newBufferedReader(path, charset)) {
             String response = reader.readLine();
             while(response != null) {
